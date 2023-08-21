@@ -15,6 +15,10 @@ import Home from "./panels/Home";
 import Menu from "./panels/Menu";
 import TabbarComponent from "./panels/tabbarComponent";
 import Step1 from "./panels/Step1";
+import Step2 from "./panels/Step2";
+import Pay1 from "./panels/Pay1";
+import Pay2 from "./panels/Pay2";
+import Pay3 from "./panels/Pay3";
 
 const App = () => {
   const [activePanel, setActivePanel] = useState("home");
@@ -43,7 +47,11 @@ const App = () => {
               <View activePanel={activePanel}>
                 <Home id="home" go={go} />
                 <Menu id="menu" go={go} />
-                <Step1 id="view1" go={go} />
+                <Step1 id="step1" go={go} />
+                <Step2 id="step2" go={go} />
+                <Pay1 id="pay1" go={go} />
+                <Pay2 id="pay2" go={go} />
+                <Pay3 id="pay3" go={go} />
               </View>
               <TabbarComponent id="tab" go={go} />
             </SplitCol>

@@ -26,20 +26,44 @@ const Menu = ({ id, go }) => (
           appearance="accent"
           stretched
           onClick={go}
-          data-to="view1"
+          data-to="step1"
         >
           Узнать сумму к оплате
         </Button>
-        <Button size="l" appearance="accent" stretched>
+        <Button
+          size="l"
+          appearance="accent"
+          stretched
+          onClick={go}
+          data-to="step1"
+        >
           Оплатить
         </Button>
-        <Button size="l" appearance="accent" stretched>
+        <Button
+          size="l"
+          appearance="accent"
+          stretched
+          onClick={go}
+          data-to="step1"
+        >
           Передать показания
         </Button>
-        <Button size="l" appearance="accent" stretched>
+        <Button
+          size="l"
+          appearance="accent"
+          stretched
+          onClick={go}
+          data-to="step1"
+        >
           Подписаться на электронную квитан..
         </Button>
-        <Button size="l" appearance="accent" stretched>
+        <Button
+          size="l"
+          appearance="accent"
+          stretched
+          onClick={go}
+          data-to="step1"
+        >
           Скачать электронную квитанцию
         </Button>
       </ButtonGroup>

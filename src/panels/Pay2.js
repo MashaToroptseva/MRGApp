@@ -12,21 +12,19 @@ import {
 } from "@vkontakte/vkui";
 
 import "./index.css";
-import account from "../img/account.png";
+import hand from "../img/hand.png";
 
-const Step1 = ({ id, go }) => {
+const Pay2 = ({ id, go }) => {
   const [inputValue, setInputValue] = useState("");
   const [disabled, setDisabled] = useState(true);
 
   const handleInputChange = (event) => {
     let newValue;
 
-    if (event.target.value.length > 9) {
+    if (event.target.value.length > 0) {
       setDisabled(false);
-      newValue = event.target.value.slice(0, 9);
     } else {
       setDisabled(true);
-      newValue = event.target.value;
     }
     setInputValue(newValue);
   };
@@ -39,21 +37,21 @@ const Step1 = ({ id, go }) => {
       <Div className="menu-container">
         <Div className="msg center">
           <div>
-            <img className="account-img" src={account} />
+            Данные о сумме обновлялись: <b>01.12.2022</b> <br />
+            Сумма к оплате: <b> 90.0 ₽ </b>
+            <br />
           </div>
-          <div>
-            Введите номер лицевого счета (9 цифр). Номер лицевого счета можно
-            посмотреть в квитанции.
+          <div className="margin-top">
+            &#9997; Введите сумму к оплате или нажмите “Оплатить всю сумму”
           </div>
         </Div>
         <div>
           <div className="input">
-            <div className="input-title">Введите лицевой счёт</div>
+            <div className="input-title">Введите сумму к оплате</div>
             <Input
               id="account-number"
-              type="number"
-              max="9"
-              placeholder="123456789"
+              type="text"
+              placeholder="150"
               value={inputValue}
               onChange={handleInputChange}
             />
@@ -70,16 +68,25 @@ const Step1 = ({ id, go }) => {
               appearance="accent"
               stretched
               onClick={go}
-              data-to="step2"
+              data-to="pay3"
             >
-              Продолжить
+              Оплатить
             </Button>
             <Button
               size="l"
               appearance="accent"
               stretched
               onClick={go}
-              data-to="menu"
+              data-to="pay3"
+            >
+              Оплатить всю сумму
+            </Button>
+            <Button
+              size="l"
+              appearance="accent"
+              stretched
+              onClick={go}
+              data-to="pay2"
             >
               Назад
             </Button>
@@ -90,8 +97,8 @@ const Step1 = ({ id, go }) => {
   );
 };
 
-Step1.propTypes = {
+Pay2.propTypes = {
   id: PropTypes.string.isRequired,
   go: PropTypes.func.isRequired,
 };
-export default Step1;
+export default Pay2;
