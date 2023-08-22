@@ -13,7 +13,7 @@ import {
 
 import "../index.css";
 
-const Meters1 = ({ id, go }) => {
+const Subscribe1 = ({ id, go }) => {
   const [inputValue, setInputValue] = useState("");
   const [disabled, setDisabled] = useState(true);
 
@@ -34,21 +34,19 @@ const Meters1 = ({ id, go }) => {
         Мой Газ
       </PanelHeader>
       <Div className="menu-container">
-        <Div className="msg text">
-          <div>Введите текущие показания ПУГ</div>
+        <Div className="msg center text">
           <div>
-            Предыдущие показания на
-            <span>10.10.2022:</span>
-            <span> 250 м3</span>
+            Для того, что бы получать электронную квитанцию, введите свой{" "}
+            <b>email</b>
           </div>
         </Div>
         <div>
           <div className="input">
-            <div className="input-title">Введите текущие показания</div>
+            <div className="input-title">Введите email</div>
             <Input
               id="account-number"
               type="text"
-              placeholder="+79817083922"
+              placeholder="example@mail.ru"
               value={inputValue}
               onChange={handleInputChange}
             />
@@ -65,7 +63,7 @@ const Meters1 = ({ id, go }) => {
               appearance="accent"
               stretched
               onClick={go}
-              data-to="pay2"
+              data-to="subscribe2"
             >
               Продолжить
             </Button>
@@ -73,7 +71,7 @@ const Meters1 = ({ id, go }) => {
               size="l"
               appearance="accent"
               stretched
-              onClick={go}
+              onClick={(e) => go(e, "meters")}
               data-to="step2"
             >
               Назад
@@ -85,8 +83,8 @@ const Meters1 = ({ id, go }) => {
   );
 };
 
-Meters1.propTypes = {
+Subscribe1.propTypes = {
   id: PropTypes.string.isRequired,
   go: PropTypes.func.isRequired,
 };
-export default Meters1;
+export default Subscribe1;

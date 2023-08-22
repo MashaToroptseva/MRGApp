@@ -25,7 +25,7 @@ const Menu = ({ id, go }) => {
             size="l"
             appearance="accent"
             stretched
-            onClick={go}
+            onClick={(e) => go(e, "sum")}
             data-to="step1"
           >
             Узнать сумму к оплате
@@ -34,7 +34,7 @@ const Menu = ({ id, go }) => {
             size="l"
             appearance="accent"
             stretched
-            onClick={go}
+            onClick={(e) => go(e, "payment")}
             data-to="step1"
           >
             Оплатить
@@ -43,7 +43,7 @@ const Menu = ({ id, go }) => {
             size="l"
             appearance="accent"
             stretched
-            onClick={go}
+            onClick={(e) => go(e, "meters")}
             data-to="step1"
           >
             Передать показания
@@ -52,16 +52,16 @@ const Menu = ({ id, go }) => {
             size="l"
             appearance="accent"
             stretched
-            onClick={go}
+            onClick={(e) => go(e, "subscribe")}
             data-to="step1"
           >
-            Подписаться на электронную квитан..
+            Подписаться на электронную квитанцию
           </Button>
           <Button
             size="l"
             appearance="accent"
             stretched
-            onClick={go}
+            onClick={(e) => go(e, "download")}
             data-to="step1"
           >
             Скачать электронную квитанцию

@@ -74,7 +74,7 @@ const Pay1 = ({ id, go }) => {
               size="l"
               appearance="accent"
               stretched
-              onClick={go}
+              onClick={(e) => go(e, "payment")}
               data-to="step2"
             >
               Назад

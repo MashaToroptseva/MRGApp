@@ -85,7 +85,7 @@ const Pay2 = ({ id, go }) => {
               appearance="accent"
               stretched
               onClick={go}
-              data-to="pay2"
+              data-to="pay1"
             >
               Назад
             </Button>

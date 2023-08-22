@@ -20,12 +20,18 @@ import Pay1 from "./panels/payment/Pay1";
 import Pay2 from "./panels/payment/Pay2";
 import Pay3 from "./panels/payment/Pay3";
 import PayFinish from "./panels/payment/PayFinish";
-import Meters1 from "./panels/meters/Metrers1";
+import Meters1 from "./panels/meters/Meters1";
+import MetersFinish from "./panels/meters/MetersFinish";
+import Subscribe1 from "./panels/subscribe/Subscribe1";
+import Subscribe2 from "./panels/subscribe/Subscribe2";
+import SubscribeFinish from "./panels/subscribe/SubscribeFinish";
+import Download from "./panels/download/Download";
 
 const App = () => {
   const [activePanel, setActivePanel] = useState("home");
   const [fetchedUser, setUser] = useState(null);
   const [popout, setPopout] = useState(<ScreenSpinner size="large" />);
+  const [nextPlace, setNextPlace] = useState("");
 
   useEffect(() => {
     async function fetchData() {
@@ -36,7 +42,8 @@ const App = () => {
     fetchData();
   }, []);
 
-  const go = (e) => {
+  const go = (e, place) => {
+    setNextPlace(place);
     setActivePanel(e.currentTarget.dataset.to);
   };
 
@@ -49,13 +56,18 @@ const App = () => {
               <View activePanel={activePanel}>
                 <Home id="home" go={go} />
                 <Menu id="menu" go={go} />
-                <Step1 id="step1" go={go} />
-                <Step2 id="step2" go={go} />
-                <Pay1 id="pay1" go={go} />
+                <Step1 id="step1" go={go} nextPlace={nextPlace} />
+                <Step2 id="step2" go={go} nextPlace={nextPlace} />
+                <Pay1 id="pay1" go={go} nextPlace={nextPlace} />
                 <Pay2 id="pay2" go={go} />
                 <Pay3 id="pay3" go={go} />
                 <PayFinish id="payFinish" go={go} />
                 <Meters1 id="meters1" go={go} />
+                <MetersFinish id="metersFinish" go={go} />
+                <Subscribe1 id="subscribe1" go={go} />
+                <Subscribe2 id="subscribe2" go={go} />
+                <SubscribeFinish id="subscribeFinish" go={go} />
+                <Download id="download" go={go} />
               </View>
               <TabbarComponent id="tab" go={go} />
             </SplitCol>

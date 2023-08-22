@@ -11,23 +11,19 @@ import {
   ButtonGroup,
 } from "@vkontakte/vkui";
 
-import "./index.css";
-import account from "../img/account.png";
+import "../index.css";
 
-const Step1 = ({ id, go, nextPlace }) => {
-  console.log(nextPlace);
+const Meters1 = ({ id, go }) => {
   const [inputValue, setInputValue] = useState("");
   const [disabled, setDisabled] = useState(true);
 
   const handleInputChange = (event) => {
     let newValue;
 
-    if (event.target.value.length > 9) {
+    if (event.target.value.length > 0) {
       setDisabled(false);
-      newValue = event.target.value.slice(0, 9);
     } else {
       setDisabled(true);
-      newValue = event.target.value;
     }
     setInputValue(newValue);
   };
@@ -38,23 +34,23 @@ const Step1 = ({ id, go, nextPlace }) => {
         Мой Газ
       </PanelHeader>
       <Div className="menu-container">
-        <Div className="msg center">
+        <Div className="msg center text">
+          <div>Введите текущие показания ПУГ</div>
           <div>
-            <img className="account-img" src={account} />
-          </div>
-          <div>
-            Введите номер лицевого счета (9 цифр). Номер лицевого счета можно
-            посмотреть в квитанции.
+            Предыдущие показания на
+            <b>
+              <span> 10.10.2022:</span>
+              <span> 250 м3</span>
+            </b>
           </div>
         </Div>
         <div>
           <div className="input">
-            <div className="input-title">Введите лицевой счёт</div>
+            <div className="input-title">Введите текущие показания</div>
             <Input
               id="account-number"
-              type="number"
-              max="9"
-              placeholder="123456789"
+              type="text"
+              placeholder="250 м3"
               value={inputValue}
               onChange={handleInputChange}
             />
@@ -70,8 +66,8 @@ const Step1 = ({ id, go, nextPlace }) => {
               disabled={disabled}
               appearance="accent"
               stretched
-              onClick={(e) => go(e, nextPlace)}
-              data-to="step2"
+              onClick={go}
+              data-to="metersFinish"
             >
               Продолжить
             </Button>
@@ -79,8 +75,8 @@ const Step1 = ({ id, go, nextPlace }) => {
               size="l"
               appearance="accent"
               stretched
-              onClick={go}
-              data-to="menu"
+              onClick={(e) => go(e, "meters")}
+              data-to="step2"
             >
               Назад
             </Button>
@@ -91,8 +87,8 @@ const Step1 = ({ id, go, nextPlace }) => {
   );
 };
 
-Step1.propTypes = {
+Meters1.propTypes = {
   id: PropTypes.string.isRequired,
   go: PropTypes.func.isRequired,
 };
-export default Step1;
+export default Meters1;
