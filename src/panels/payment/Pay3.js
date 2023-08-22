@@ -11,8 +11,8 @@ import {
   ButtonGroup,
 } from "@vkontakte/vkui";
 
-import "./index.css";
-import logo from "../img/logo.png";
+import "../index.css";
+import logo from "../../img/logo.png";
 
 const Pay3 = ({ id, go }) => {
   return (
@@ -44,7 +44,7 @@ const Pay3 = ({ id, go }) => {
               appearance="accent"
               stretched
               onClick={go}
-              data-to="pay2"
+              data-to="payFinish"
             >
               Оплатить
             </Button>

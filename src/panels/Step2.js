@@ -7,7 +7,7 @@ import {
   PanelHeaderBack,
   Div,
   Button,
-  Input,
+  Text,
   ButtonGroup,
 } from "@vkontakte/vkui";
 
@@ -19,10 +19,22 @@ const Step2 = ({ id, go }) => (
       Мой Газ
     </PanelHeader>
     <Div className="menu-container">
-      <Div className="msg center">
-        <div>👋 Здравствуйте, Сергей!</div>
-        <div>Ваш номер лицевого счета: 123456789</div>
-        <div>Сумма к оплате в текущем месяце: 90.0 ₽</div>
+      <Div className="msg center text">
+        <Text>
+          👋 Здравствуйте, <span>Сергей</span>!
+        </Text>
+        <Text>
+          <div>Ваш номер лицевого счета:</div>
+          <span>
+            <b>123456789</b>
+          </span>
+        </Text>
+        <Text>
+          <div>Сумма к оплате в текущем месяце:</div>
+          <span>
+            <b>90.0 ₽</b>
+          </span>
+        </Text>
       </Div>
       <div>
         <ButtonGroup className="button-group" mode="vertical" gap="m" stretched>

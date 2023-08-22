@@ -11,7 +11,7 @@ import {
   ButtonGroup,
 } from "@vkontakte/vkui";
 
-import "./index.css";
+import "../index.css";
 
 const Pay1 = ({ id, go }) => {
   const [inputValue, setInputValue] = useState("");
@@ -37,9 +37,7 @@ const Pay1 = ({ id, go }) => {
       </PanelHeader>
       <Div className="menu-container">
         <Div className="msg-group">
-          <div className="msg">
-            Введите ваш номер телефона или нажмите кнопку "Поделиться номером"
-          </div>
+          <div className="msg">Введите ваш номер телефона</div>
           <div className="msg">
             Он может потребоваться при возникновении вопросов, связанных с
             оплатой

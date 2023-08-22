@@ -11,10 +11,9 @@ import {
   ButtonGroup,
 } from "@vkontakte/vkui";
 
-import "./index.css";
-import hand from "../img/hand.png";
+import "../index.css";
 
-const Pay2 = ({ id, go }) => {
+const Meters1 = ({ id, go }) => {
   const [inputValue, setInputValue] = useState("");
   const [disabled, setDisabled] = useState(true);
 
@@ -35,23 +34,21 @@ const Pay2 = ({ id, go }) => {
         Мой Газ
       </PanelHeader>
       <Div className="menu-container">
-        <Div className="msg center">
+        <Div className="msg text">
+          <div>Введите текущие показания ПУГ</div>
           <div>
-            Данные о сумме обновлялись: <b>01.12.2022</b> <br />
-            Сумма к оплате: <b> 90.0 ₽ </b>
-            <br />
-          </div>
-          <div className="margin-top">
-            &#9997; Введите сумму к оплате или нажмите “Оплатить всю сумму”
+            Предыдущие показания на
+            <span>10.10.2022:</span>
+            <span> 250 м3</span>
           </div>
         </Div>
         <div>
           <div className="input">
-            <div className="input-title">Введите сумму к оплате</div>
+            <div className="input-title">Введите текущие показания</div>
             <Input
               id="account-number"
               type="text"
-              placeholder="150"
+              placeholder="+79817083922"
               value={inputValue}
               onChange={handleInputChange}
             />
@@ -68,25 +65,16 @@ const Pay2 = ({ id, go }) => {
               appearance="accent"
               stretched
               onClick={go}
-              data-to="pay3"
-            >
-              Оплатить
-            </Button>
-            <Button
-              size="l"
-              appearance="accent"
-              stretched
-              onClick={go}
-              data-to="pay3"
-            >
-              Оплатить всю сумму
-            </Button>
-            <Button
-              size="l"
-              appearance="accent"
-              stretched
-              onClick={go}
               data-to="pay2"
+            >
+              Продолжить
+            </Button>
+            <Button
+              size="l"
+              appearance="accent"
+              stretched
+              onClick={go}
+              data-to="step2"
             >
               Назад
             </Button>
@@ -97,8 +85,8 @@ const Pay2 = ({ id, go }) => {
   );
 };
 
-Pay2.propTypes = {
+Meters1.propTypes = {
   id: PropTypes.string.isRequired,
   go: PropTypes.func.isRequired,
 };
-export default Pay2;
+export default Meters1;
