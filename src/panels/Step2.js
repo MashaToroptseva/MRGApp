@@ -23,7 +23,7 @@ const Step2 = ({ id, go, nextPlace }) => {
           size="l"
           appearance="accent"
           stretched
-          onClick={go}
+          onClick={(e) => go(e, nextPlace)}
           data-to="step1"
         >
           Изменить ЛС

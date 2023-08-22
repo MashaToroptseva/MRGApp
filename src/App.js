@@ -69,7 +69,7 @@ const App = () => {
                 <SubscribeFinish id="subscribeFinish" go={go} />
                 <Download id="download" go={go} />
               </View>
-              <TabbarComponent id="tab" go={go} />
+              <TabbarComponent id="tab" go={go} nextPlace={nextPlace} />
             </SplitCol>
           </SplitLayout>
         </AppRoot>

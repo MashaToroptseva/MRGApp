@@ -8,21 +8,34 @@ import { Icon28HomeOutline } from "@vkontakte/icons";
 import { Icon28MenuOutline } from "@vkontakte/icons";
 import { Icon28AllCategoriesOutline } from "@vkontakte/icons";
 
-const TabbarComponent = ({ id, go }) => (
-  <Panel id={id}>
-    <Tabbar shadow="false" className="Tab">
-      <TabbarItem onClick={go} data-to="home" text="Главная">
-        <Icon28HomeOutline />
-      </TabbarItem>
-      <TabbarItem onClick={go} data-to="menu" text="Меню">
-        <Icon28AllCategoriesOutline />
-      </TabbarItem>
-      <TabbarItem text="Частые вопросы">
-        <Icon28MenuOutline />
-      </TabbarItem>
-    </Tabbar>
-  </Panel>
-);
+const TabbarComponent = ({ id, go, nextPlace }) => {
+  console.log(nextPlace);
+  return (
+    <Panel id={id}>
+      <Tabbar shadow="false" className="Tab">
+        <TabbarItem
+          onClick={(e) => go(e, "home")}
+          data-to="home"
+          text="Главная"
+          selected={nextPlace === "home"}
+        >
+          <Icon28HomeOutline />
+        </TabbarItem>
+        <TabbarItem
+          onClick={(e) => go(e, "menu")}
+          data-to="menu"
+          text="Меню"
+          selected={nextPlace !== "home"}
+        >
+          <Icon28AllCategoriesOutline />
+        </TabbarItem>
+        <TabbarItem text="Частые вопросы">
+          <Icon28MenuOutline />
+        </TabbarItem>
+      </Tabbar>
+    </Panel>
+  );
+};
 
 TabbarComponent.propTypes = {
   id: PropTypes.string.isRequired,
