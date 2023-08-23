@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import axios from "axios";
 
 import {
   Panel,
@@ -31,6 +32,15 @@ const Step1 = ({ id, go, nextPlace }) => {
     }
     setInputValue(newValue);
   };
+
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    axios
+      .get("https://mybot.supplerus.com/api_dev/account/717350082") // Замените URL на свой API
+      .then((response) => setData(response.data))
+      .catch((error) => console.error("Ошибка при получении данных", error));
+  }, []);
+  console.log(data);
 
   return (
     <Panel id={id}>
@@ -70,7 +80,9 @@ const Step1 = ({ id, go, nextPlace }) => {
               disabled={disabled}
               appearance="accent"
               stretched
-              onClick={(e) => go(e, nextPlace)}
+              onClick={(e) => {
+                go(e, nextPlace);
+              }}
               data-to="step2"
             >
               Продолжить

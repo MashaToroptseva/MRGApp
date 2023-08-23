@@ -31,7 +31,7 @@ const App = () => {
   const [activePanel, setActivePanel] = useState("home");
   const [fetchedUser, setUser] = useState(null);
   const [popout, setPopout] = useState(<ScreenSpinner size="large" />);
-  const [nextPlace, setNextPlace] = useState("");
+  const [nextPlace, setNextPlace] = useState("home");
 
   useEffect(() => {
     async function fetchData() {
@@ -48,7 +48,7 @@ const App = () => {
   };
 
   return (
-    <ConfigProvider>
+    <ConfigProvider appearance="light">
       <AdaptivityProvider>
         <AppRoot>
           <SplitLayout popout={popout}>
