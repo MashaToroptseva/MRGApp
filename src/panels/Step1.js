@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
+import bridge from "@vkontakte/vk-bridge";
 import PropTypes from "prop-types";
 import axios from "axios";
+import "./index.css";
+import account from "../img/account.png";
 
 import {
   Panel,
@@ -12,14 +15,10 @@ import {
   ButtonGroup,
 } from "@vkontakte/vkui";
 
-import "./index.css";
-import account from "../img/account.png";
-
 const Step1 = ({ id, go, nextPlace }) => {
   console.log(nextPlace);
   const [inputValue, setInputValue] = useState("");
   const [disabled, setDisabled] = useState(true);
-
   const handleInputChange = (event) => {
     let newValue;
 
@@ -33,14 +32,13 @@ const Step1 = ({ id, go, nextPlace }) => {
     setInputValue(newValue);
   };
 
-  const [data, setData] = useState([]);
+  const [accountData, setAccountData] = useState([]);
   useEffect(() => {
     axios
-      .get("https://mybot.supplerus.com/api_dev/account/717350082") // Замените URL на свой API
-      .then((response) => setData(response.data))
+      .get("/api_dev/account/717350082")
+      .then((response) => setAccountData(response.data))
       .catch((error) => console.error("Ошибка при получении данных", error));
   }, []);
-  console.log(data);
 
   return (
     <Panel id={id}>

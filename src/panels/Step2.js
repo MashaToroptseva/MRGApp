@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import "./index.css";
 
 import {
   Panel,
@@ -10,8 +11,6 @@ import {
   Text,
   ButtonGroup,
 } from "@vkontakte/vkui";
-
-import "./index.css";
 
 const Step2 = ({ id, go, nextPlace }) => {
   console.log(nextPlace);
@@ -170,9 +169,7 @@ const Step2 = ({ id, go, nextPlace }) => {
           </Text>
           <Text>
             <div>Ваш номер лицевого счета:</div>
-            <span>
-              <b>123456789</b>
-            </span>
+            <span>{/* <b>{accountData.LS}</b> */}</span>
           </Text>
           <Text>
             <div>Сумма к оплате в текущем месяце:</div>
