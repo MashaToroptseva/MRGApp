@@ -11,7 +11,7 @@ import {
 
 import "../index.css";
 
-const MetersFinish = ({ id, go }) => {
+const MetersFinish = ({ id, go, accountData }) => {
   return (
     <Panel id={id}>
       <PanelHeader before={<PanelHeaderBack onClick={go} data-to="menu" />}>
@@ -24,7 +24,7 @@ const MetersFinish = ({ id, go }) => {
             квитанцию на указанный вами адрес электронной почты.
           </div>
           <div>
-            Номер лицевого счета: <b>123456789</b>
+            Номер лицевого счета: <b>{accountData.LS}</b>
           </div>
         </Div>
         <div>

@@ -14,7 +14,7 @@ import {
 import "../index.css";
 import logo from "../../img/logo.png";
 
-const Pay3 = ({ id, go }) => {
+const Pay3 = ({ id, go, accountData }) => {
   return (
     <Panel id={id}>
       <PanelHeader before={<PanelHeaderBack onClick={go} data-to="menu" />}>
@@ -23,12 +23,12 @@ const Pay3 = ({ id, go }) => {
       <Div className="menu-container">
         <Div className="msg-group">
           <div className="msg">
-            Номер лицевого счета: 123456789 Телефон: 78005553535 Сумма платежа:
-            90.0 ₽ Комиссия: 1.53 ₽ Итого к оплате: 91.53 ₽
+            Номер лицевого счета: {accountData.LS} Телефон: 78005553535 Сумма
+            платежа: 90.0 ₽ Комиссия: 1.53 ₽ Итого к оплате: 91.53 ₽
           </div>
           <div className="msg">
             <img className="logo" src={logo} />
-            Оплата счета 123456789 <br />
+            Оплата счета {accountData.LS} <br />
             За 4м³ от 20.12.2022
           </div>
         </Div>

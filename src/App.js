@@ -32,6 +32,7 @@ const App = () => {
   const [fetchedUser, setUser] = useState(null);
   const [popout, setPopout] = useState(<ScreenSpinner size="large" />);
   const [nextPlace, setNextPlace] = useState("home");
+  const [accountData, setAccountData] = useState({});
 
   useEffect(() => {
     async function fetchData() {
@@ -47,6 +48,10 @@ const App = () => {
     setActivePanel(e.currentTarget.dataset.to);
   };
 
+  const setAccount = (data) => {
+    setAccountData(data);
+  };
+
   return (
     <ConfigProvider appearance="light">
       <AdaptivityProvider>
@@ -56,18 +61,32 @@ const App = () => {
               <View activePanel={activePanel}>
                 <Home id="home" go={go} />
                 <Menu id="menu" go={go} />
-                <Step1 id="step1" go={go} nextPlace={nextPlace} />
-                <Step2 id="step2" go={go} nextPlace={nextPlace} />
+                <Step1
+                  id="step1"
+                  go={go}
+                  nextPlace={nextPlace}
+                  setAccount={setAccount}
+                />
+                <Step2
+                  id="step2"
+                  go={go}
+                  nextPlace={nextPlace}
+                  accountData={accountData}
+                />
                 <Pay1 id="pay1" go={go} nextPlace={nextPlace} />
-                <Pay2 id="pay2" go={go} />
+                <Pay2 id="pay2" go={go} accountData={accountData} />
                 <Pay3 id="pay3" go={go} />
                 <PayFinish id="payFinish" go={go} />
                 <Meters1 id="meters1" go={go} />
                 <MetersFinish id="metersFinish" go={go} />
                 <Subscribe1 id="subscribe1" go={go} />
                 <Subscribe2 id="subscribe2" go={go} />
-                <SubscribeFinish id="subscribeFinish" go={go} />
-                <Download id="download" go={go} />
+                <SubscribeFinish
+                  id="subscribeFinish"
+                  go={go}
+                  accountData={accountData}
+                />
+                <Download id="download" go={go} accountData={accountData} />
               </View>
               <TabbarComponent id="tab" go={go} nextPlace={nextPlace} />
             </SplitCol>

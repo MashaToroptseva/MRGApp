@@ -12,8 +12,8 @@ import {
   ButtonGroup,
 } from "@vkontakte/vkui";
 
-const Step2 = ({ id, go, nextPlace }) => {
-  console.log(nextPlace);
+const Step2 = ({ id, go, nextPlace, accountData }) => {
+  console.log(nextPlace, accountData);
   let content = null;
   if (nextPlace === "sum") {
     content = (
@@ -169,12 +169,15 @@ const Step2 = ({ id, go, nextPlace }) => {
           </Text>
           <Text>
             <div>Ваш номер лицевого счета:</div>
-            <span>{/* <b>{accountData.LS}</b> */}</span>
+            <span>
+              <b>{accountData.LS}</b>
+            </span>
           </Text>
+          {/* <Text>Данные обновлялись: 01.12.2022</Text> */}
           <Text>
             <div>Сумма к оплате в текущем месяце:</div>
             <span>
-              <b>90.0 ₽</b>
+              <b>{accountData.k_saldo} ₽</b>
             </span>
           </Text>
         </Div>

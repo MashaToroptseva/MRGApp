@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import bridge from "@vkontakte/vk-bridge";
 import PropTypes from "prop-types";
 import axios from "axios";
 import "./index.css";
@@ -15,7 +14,7 @@ import {
   ButtonGroup,
 } from "@vkontakte/vkui";
 
-const Step1 = ({ id, go, nextPlace }) => {
+const Step1 = ({ id, go, nextPlace, setAccount }) => {
   console.log(nextPlace);
   const [inputValue, setInputValue] = useState("");
   const [disabled, setDisabled] = useState(true);
@@ -32,11 +31,10 @@ const Step1 = ({ id, go, nextPlace }) => {
     setInputValue(newValue);
   };
 
-  const [accountData, setAccountData] = useState([]);
   useEffect(() => {
     axios
       .get("/api_dev/account/717350082")
-      .then((response) => setAccountData(response.data))
+      .then((response) => setAccount(response.data))
       .catch((error) => console.error("Ошибка при получении данных", error));
   }, []);
 

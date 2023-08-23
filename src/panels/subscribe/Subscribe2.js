@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import axios from "axios";
+import "../index.css";
 
 import {
   Panel,
@@ -9,8 +11,6 @@ import {
   Button,
   ButtonGroup,
 } from "@vkontakte/vkui";
-
-import "../index.css";
 
 const Subscribe2 = ({ id, go }) => {
   return (

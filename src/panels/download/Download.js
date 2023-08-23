@@ -8,11 +8,12 @@ import {
   Div,
   Button,
   ButtonGroup,
+  Link,
 } from "@vkontakte/vkui";
 
 import "../index.css";
 
-const MetersFinish = ({ id, go }) => {
+const MetersFinish = ({ id, go, accountData }) => {
   return (
     <Panel id={id}>
       <PanelHeader before={<PanelHeaderBack onClick={go} data-to="menu" />}>
@@ -22,7 +23,10 @@ const MetersFinish = ({ id, go }) => {
         <Div className="msg center text">
           <div>Отлично!✨</div>
           <div>Для просмотра квитанции, откройте документ:</div>
-          <div>Электронная квитанция</div>
+
+          <Link href={accountData.url_receipt} target="_blank">
+            <div>Электронная квитанция</div>
+          </Link>
         </Div>
         <div>
           <ButtonGroup
@@ -31,15 +35,16 @@ const MetersFinish = ({ id, go }) => {
             gap="m"
             stretched
           >
-            <Button
-              size="l"
-              appearance="accent"
-              stretched
-              onClick={go}
-              data-to="home"
-            >
-              Скачать
+            <Button size="l" appearance="accent" stretched>
+              <Link
+                className="button-link"
+                href={accountData.url_receipt}
+                target="_blank"
+              >
+                Скачать
+              </Link>
             </Button>
+
             <Button
               size="l"
               appearance="accent"

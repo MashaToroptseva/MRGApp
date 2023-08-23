@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { parseISO, format } from "date-fns";
 
 import {
   Panel,
@@ -13,7 +14,7 @@ import {
 
 import "../index.css";
 
-const Pay2 = ({ id, go }) => {
+const Pay2 = ({ id, go, accountData }) => {
   const [inputValue, setInputValue] = useState("");
   const [disabled, setDisabled] = useState(true);
 
@@ -28,6 +29,10 @@ const Pay2 = ({ id, go }) => {
     setInputValue(newValue);
   };
 
+  const inputDate = accountData.dat_f;
+  const parsedDate = parseISO(inputDate);
+  const formattedDate = format(parsedDate, "dd.MM.yyyy");
+
   return (
     <Panel id={id}>
       <PanelHeader before={<PanelHeaderBack onClick={go} data-to="menu" />}>
@@ -36,8 +41,8 @@ const Pay2 = ({ id, go }) => {
       <Div className="menu-container">
         <Div className="msg center">
           <div>
-            Данные о сумме обновлялись: <b>01.12.2022</b> <br />
-            Сумма к оплате: <b> 90.0 ₽ </b>
+            Данные о сумме обновлялись: <b>{formattedDate}</b> <br />
+            Сумма к оплате: <b>{accountData.k_saldo} ₽</b>
             <br />
           </div>
           <div className="margin-top">

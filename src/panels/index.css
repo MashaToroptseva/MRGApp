@@ -46,6 +46,14 @@
   position: fixed;
   bottom: 60px;
 } */
+.button-link {
+  color: #fff;
+  text-decoration: none;
+}
+.button-link:hover {
+  color: #fff;
+  text-decoration: none;
+}
 .home-text {
   width: 80%;
   align-self: center;
