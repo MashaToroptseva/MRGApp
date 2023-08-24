@@ -26,6 +26,8 @@ import Subscribe1 from "./panels/subscribe/Subscribe1";
 import Subscribe2 from "./panels/subscribe/Subscribe2";
 import SubscribeFinish from "./panels/subscribe/SubscribeFinish";
 import Download from "./panels/download/Download";
+import Faq from "./panels/faq/faq";
+import Contacts from "./panels/contacts/contacts";
 
 const App = () => {
   const [activePanel, setActivePanel] = useState("home");
@@ -33,6 +35,8 @@ const App = () => {
   const [popout, setPopout] = useState(<ScreenSpinner size="large" />);
   const [nextPlace, setNextPlace] = useState("home");
   const [accountData, setAccountData] = useState({});
+  const [phoneData, setPhoneData] = useState({});
+  const [metersData, setMetersData] = useState({});
 
   useEffect(() => {
     async function fetchData() {
@@ -50,6 +54,15 @@ const App = () => {
 
   const setAccount = (data) => {
     setAccountData(data);
+  };
+
+  const setMeters = (data) => {
+    setMetersData(data);
+    console.log(metersData);
+  };
+
+  const setPhone = (data) => {
+    setPhoneData(data);
   };
 
   return (
@@ -72,13 +85,34 @@ const App = () => {
                   go={go}
                   nextPlace={nextPlace}
                   accountData={accountData}
+                  fetchedUser={fetchedUser}
                 />
-                <Pay1 id="pay1" go={go} nextPlace={nextPlace} />
-                <Pay2 id="pay2" go={go} accountData={accountData} />
-                <Pay3 id="pay3" go={go} />
+                <Pay1
+                  id="pay1"
+                  go={go}
+                  nextPlace={nextPlace}
+                  setPhone={setPhone}
+                />
+                <Pay2
+                  id="pay2"
+                  go={go}
+                  accountData={accountData}
+                  setMeters={setMeters}
+                />
+                <Pay3
+                  id="pay3"
+                  go={go}
+                  accountData={accountData}
+                  metersData={metersData}
+                  phoneData={phoneData}
+                />
                 <PayFinish id="payFinish" go={go} />
-                <Meters1 id="meters1" go={go} />
-                <MetersFinish id="metersFinish" go={go} />
+                <Meters1 id="meters1" go={go} accountData={accountData} />
+                <MetersFinish
+                  id="metersFinish"
+                  go={go}
+                  accountData={accountData}
+                />
                 <Subscribe1 id="subscribe1" go={go} />
                 <Subscribe2 id="subscribe2" go={go} />
                 <SubscribeFinish
@@ -87,6 +121,8 @@ const App = () => {
                   accountData={accountData}
                 />
                 <Download id="download" go={go} accountData={accountData} />
+                <Faq id="faq" go={go} />
+                <Contacts id="contacts" go={go} />
               </View>
               <TabbarComponent id="tab" go={go} nextPlace={nextPlace} />
             </SplitCol>

@@ -13,21 +13,21 @@ import {
 
 import "../index.css";
 
-const Pay1 = ({ id, go }) => {
+const Pay1 = ({ id, go, setPhone }) => {
   const [inputValue, setInputValue] = useState("");
   const [disabled, setDisabled] = useState(true);
 
   const handleInputChange = (event) => {
     let newValue;
 
-    if (event.target.value.length > 11) {
+    if (event.target.value.length > 0) {
       setDisabled(false);
-      newValue = event.target.value.slice(0, 11);
     } else {
       setDisabled(true);
       newValue = event.target.value;
     }
     setInputValue(newValue);
+    setPhone(event.target.value);
   };
 
   return (

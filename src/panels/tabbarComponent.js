@@ -25,11 +25,16 @@ const TabbarComponent = ({ id, go, nextPlace }) => {
           onClick={(e) => go(e, "menu")}
           data-to="menu"
           text="Меню"
-          selected={nextPlace !== "home"}
+          selected={nextPlace !== "home" && nextPlace !== "faq"}
         >
           <Icon28AllCategoriesOutline />
         </TabbarItem>
-        <TabbarItem text="Частые вопросы">
+        <TabbarItem
+          text="Частые вопросы"
+          onClick={(e) => go(e, "faq")}
+          data-to="faq"
+          selected={nextPlace === "faq"}
+        >
           <Icon28MenuOutline />
         </TabbarItem>
       </Tabbar>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { parseISO, format } from "date-fns";
 
 import {
   Panel,
@@ -14,7 +15,14 @@ import {
 import "../index.css";
 import logo from "../../img/logo.png";
 
-const Pay3 = ({ id, go, accountData }) => {
+const Pay3 = ({ id, go, accountData, metersData, phoneData }) => {
+  console.log(metersData, phoneData);
+  // const inputDate = accountData.datepok_pug; // Верный вариант
+  const inputDate = accountData.date; // Вариант с цифрами чтобы работало
+  const parsedDate = parseISO(inputDate);
+  const formattedDate = format(parsedDate, "dd.MM.yyyy");
+  const comission = 1.53;
+  const sumTotal = parseInt(metersData) + comission;
   return (
     <Panel id={id}>
       <PanelHeader before={<PanelHeaderBack onClick={go} data-to="menu" />}>
@@ -23,13 +31,14 @@ const Pay3 = ({ id, go, accountData }) => {
       <Div className="menu-container">
         <Div className="msg-group">
           <div className="msg">
-            Номер лицевого счета: {accountData.LS} Телефон: 78005553535 Сумма
-            платежа: 90.0 ₽ Комиссия: 1.53 ₽ Итого к оплате: 91.53 ₽
+            Номер лицевого счета: {accountData.LS} Телефон: {phoneData} Сумма
+            платежа: {metersData} ₽ Комиссия: {comission} ₽ Итого к оплате:{" "}
+            {sumTotal} ₽
           </div>
           <div className="msg">
             <img className="logo" src={logo} />
             Оплата счета {accountData.LS} <br />
-            За 4м³ от 20.12.2022
+            За {accountData.pokaz_pug} м³ от {formattedDate}
           </div>
         </Div>
         <div>

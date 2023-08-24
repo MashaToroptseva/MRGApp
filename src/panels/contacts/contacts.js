@@ -10,16 +10,16 @@ import {
   PanelHeaderBack,
 } from "@vkontakte/vkui";
 
-import "./index.css";
+import "../index.css";
 
-const Menu = ({ id, go }) => {
+const Contacts = ({ id, go }) => {
   return (
     <Panel id={id}>
       <PanelHeader before={<PanelHeaderBack onClick={go} data-to="home" />}>
         Мой Газ
       </PanelHeader>
       <Div className="menu-container">
-        <div className="msg">👋 Здравствуйте! Что вы хотите сделать?</div>
+        <div className="msg">Адреса и контакты абонентских пунктов:</div>
         <ButtonGroup className="button-group" mode="vertical" gap="m" stretched>
           <Button
             size="l"
@@ -28,7 +28,7 @@ const Menu = ({ id, go }) => {
             onClick={(e) => go(e, "sum")}
             data-to="step1"
           >
-            Узнать сумму к оплате
+            Санкт - Петербург
           </Button>
           <Button
             size="l"
@@ -37,7 +37,7 @@ const Menu = ({ id, go }) => {
             onClick={(e) => go(e, "payment")}
             data-to="step1"
           >
-            Оплатить
+            Ленинградская обл.
           </Button>
           <Button
             size="l"
@@ -46,7 +46,7 @@ const Menu = ({ id, go }) => {
             onClick={(e) => go(e, "meters")}
             data-to="step1"
           >
-            Передать показания
+            Карелия
           </Button>
           <Button
             size="l"
@@ -55,25 +55,16 @@ const Menu = ({ id, go }) => {
             onClick={(e) => go(e, "subscribe")}
             data-to="step1"
           >
-            Подписаться на электронную квитанцию
-          </Button>
-          <Button
-            size="l"
-            appearance="accent"
-            stretched
-            onClick={(e) => go(e, "download")}
-            data-to="step1"
-          >
-            Скачать электронную квитанцию
+            Калининград
           </Button>
           <Button
             size="l"
             appearance="accent"
             stretched
             onClick={go}
-            data-to="contacts"
+            data-to="home"
           >
-            Контактная информация общества
+            Главная
           </Button>
         </ButtonGroup>
       </Div>
@@ -81,9 +72,9 @@ const Menu = ({ id, go }) => {
   );
 };
 
-Menu.propTypes = {
+Contacts.propTypes = {
   id: PropTypes.string.isRequired,
   go: PropTypes.func.isRequired,
 };
 
-export default Menu;
+export default Contacts;

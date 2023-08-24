@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import axios from "axios";
+import { parseISO, format } from "date-fns";
 
 import {
   Panel,
@@ -13,7 +15,9 @@ import {
 
 import "../index.css";
 
-const Meters1 = ({ id, go }) => {
+const Meters1 = ({ id, go, accountData }) => {
+  console.log(accountData);
+
   const [inputValue, setInputValue] = useState("");
   const [disabled, setDisabled] = useState(true);
 
@@ -28,6 +32,37 @@ const Meters1 = ({ id, go }) => {
     setInputValue(newValue);
   };
 
+  const [responseMessage, setResponseMessage] = useState("");
+  const [formattedDateTime, setFormattedDateTime] = useState("");
+
+  const sendMeters = async () => {
+    const currentDate = new Date();
+    const formattedDateTime = format(currentDate, "yyyy-MM-dd HH:mm:ss");
+    setFormattedDateTime(formattedDateTime); // Обновляем значение formattedDateTime
+
+    const requestBody = {
+      id_user_tlgrm: 123456789,
+      date: formattedDateTime,
+      device_ind_1: inputValue,
+      receipt_subscr: false,
+      email_subscr: "",
+    };
+
+    try {
+      const response = await axios.post(
+        "/api_dev/account/717350082",
+        requestBody
+      );
+      setResponseMessage(response.data.message);
+    } catch (error) {
+      console.error("Ошибка при отправке POST-запроса", error);
+    }
+  };
+  // const inputDate = accountData.datepok_pug; // Верный вариант
+  const inputDate = accountData.date; // Вариант с цифрами чтобы работало
+  const parsedDate = parseISO(inputDate);
+  const formattedDate = format(parsedDate, "dd.MM.yyyy");
+
   return (
     <Panel id={id}>
       <PanelHeader before={<PanelHeaderBack onClick={go} data-to="menu" />}>
@@ -36,11 +71,10 @@ const Meters1 = ({ id, go }) => {
       <Div className="menu-container">
         <Div className="msg center text">
           <div>Введите текущие показания ПУГ</div>
+          <div>Предыдущие показания на</div>
           <div>
-            Предыдущие показания на
             <b>
-              <span> 10.10.2022:</span>
-              <span> 250 м3</span>
+              {formattedDate}: {accountData.pokaz_pug} м3
             </b>
           </div>
         </Div>
@@ -66,7 +100,9 @@ const Meters1 = ({ id, go }) => {
               disabled={disabled}
               appearance="accent"
               stretched
-              onClick={go}
+              onClick={(e) => {
+                go(e, sendMeters);
+              }}
               data-to="metersFinish"
             >
               Продолжить

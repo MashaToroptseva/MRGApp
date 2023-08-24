@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import bridge from "@vkontakte/vk-bridge";
 import "./index.css";
 
 import {
@@ -12,8 +13,8 @@ import {
   ButtonGroup,
 } from "@vkontakte/vkui";
 
-const Step2 = ({ id, go, nextPlace, accountData }) => {
-  console.log(nextPlace, accountData);
+const Step2 = ({ id, go, nextPlace, accountData, fetchedUser }) => {
+  console.log(nextPlace, accountData, fetchedUser.first_name);
   let content = null;
   if (nextPlace === "sum") {
     content = (
@@ -165,7 +166,7 @@ const Step2 = ({ id, go, nextPlace, accountData }) => {
       <Div className="menu-container">
         <Div className="msg center text">
           <Text>
-            👋 Здравствуйте, <span>Сергей</span>!
+            👋 Здравствуйте, <span>{fetchedUser.first_name}</span>!
           </Text>
           <Text>
             <div>Ваш номер лицевого счета:</div>

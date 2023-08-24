@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { parseISO, format } from "date-fns";
 
 import {
   Panel,
@@ -11,7 +12,12 @@ import {
 
 import "../index.css";
 
-const MetersFinish = ({ id, go }) => {
+const MetersFinish = ({ id, go, accountData }) => {
+  // const inputDate = accountData.datepok_pug; // Верный вариант
+  const inputDate = accountData.date; // Вариант с цифрами чтобы работало
+  const parsedDate = parseISO(inputDate);
+  const formattedDate = format(parsedDate, "dd.MM.yyyy");
+
   return (
     <Panel id={id}>
       <PanelHeader before={<PanelHeaderBack onClick={go} data-to="menu" />}>
@@ -23,10 +29,13 @@ const MetersFinish = ({ id, go }) => {
           <div>
             Актуальные данные:
             <div>
-              Номер лицевого счета: <b>123456789</b>{" "}
+              Номер лицевого счета: <b>{accountData.LS}</b>
             </div>
             <div>
-              Последние показания: <b>10.10.2022: 251 м3</b>{" "}
+              Последние показания:{" "}
+              <b>
+                {formattedDate}: {accountData.pokaz_pug} м3
+              </b>
             </div>
           </div>
         </Div>
