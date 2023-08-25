@@ -16,10 +16,9 @@ import {
 import "../index.css";
 
 const Meters1 = ({ id, go, accountData }) => {
-  console.log(accountData);
-
   const [inputValue, setInputValue] = useState("");
   const [disabled, setDisabled] = useState(true);
+  const [metersData, setMetersData] = useState({});
 
   const handleInputChange = (event) => {
     let newValue;
@@ -30,6 +29,8 @@ const Meters1 = ({ id, go, accountData }) => {
       setDisabled(true);
     }
     setInputValue(newValue);
+    setMetersData(parseInt(event.target.value));
+    console.log(metersData);
   };
 
   const [responseMessage, setResponseMessage] = useState("");
@@ -37,13 +38,13 @@ const Meters1 = ({ id, go, accountData }) => {
 
   const sendMeters = async () => {
     const currentDate = new Date();
-    const formattedDateTime = format(currentDate, "yyyy-MM-dd HH:mm:ss");
+    const formattedDateTime = format(currentDate, "dd.MM.yyyy HH:mm:ss");
     setFormattedDateTime(formattedDateTime); // Обновляем значение formattedDateTime
 
     const requestBody = {
       id_user_tlgrm: 123456789,
       date: formattedDateTime,
-      device_ind_1: inputValue,
+      device_ind_1: metersData,
       receipt_subscr: false,
       email_subscr: "",
     };

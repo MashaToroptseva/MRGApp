@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { parseISO, format } from "date-fns";
+import axios from "axios";
+import "../index.css";
+import logo from "../../img/logo.png";
 
 import {
   Panel,
@@ -8,21 +11,53 @@ import {
   PanelHeaderBack,
   Div,
   Button,
-  Input,
   ButtonGroup,
 } from "@vkontakte/vkui";
 
-import "../index.css";
-import logo from "../../img/logo.png";
-
-const Pay3 = ({ id, go, accountData, metersData, phoneData }) => {
-  console.log(metersData, phoneData);
+const Pay3 = ({ id, go, accountData, sumToPayData, phoneData }) => {
+  console.log(sumToPayData, phoneData);
   // const inputDate = accountData.datepok_pug; // Верный вариант
   const inputDate = accountData.date; // Вариант с цифрами чтобы работало
   const parsedDate = parseISO(inputDate);
   const formattedDate = format(parsedDate, "dd.MM.yyyy");
   const comission = 1.53;
-  const sumTotal = parseInt(metersData) + comission;
+  const sumTotal = parseInt(sumToPayData) + comission;
+  const [responseMessage, setResponseMessage] = useState("");
+  const [formattedDateTime, setFormattedDateTime] = useState("");
+
+  const toPay = async () => {
+    const currentDate = new Date();
+    const formattedDateTime = format(currentDate, "yyyy-MM-dd HH:mm:ss");
+    setFormattedDateTime(formattedDateTime); // Обновляем значение formattedDateTime
+
+    const requestBody = {
+      id_payment: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      regionId: 20000,
+      updateId: "",
+      preCheckId: "",
+      id_user_tlgrm: 34434,
+      currency: "RUB",
+      total: sumTotal,
+      commission: 0,
+      cost: 0,
+      invoicePayload: "",
+      uniqueId: "",
+      payStatus: 1,
+      tlgPaymentChargeId: "",
+      prvdPaymentChargeId: "",
+    };
+
+    try {
+      const response = await axios.post(
+        "/api_dev/payment/717350082",
+        requestBody
+      );
+      setResponseMessage(response.data.message);
+    } catch (error) {
+      console.error("Ошибка при отправке POST-запроса", error);
+    }
+  };
+
   return (
     <Panel id={id}>
       <PanelHeader before={<PanelHeaderBack onClick={go} data-to="menu" />}>
@@ -32,7 +67,7 @@ const Pay3 = ({ id, go, accountData, metersData, phoneData }) => {
         <Div className="msg-group">
           <div className="msg">
             Номер лицевого счета: {accountData.LS} Телефон: {phoneData} Сумма
-            платежа: {metersData} ₽ Комиссия: {comission} ₽ Итого к оплате:{" "}
+            платежа: {sumToPayData} ₽ Комиссия: {comission} ₽ Итого к оплате:{" "}
             {sumTotal} ₽
           </div>
           <div className="msg">
@@ -52,7 +87,9 @@ const Pay3 = ({ id, go, accountData, metersData, phoneData }) => {
               size="l"
               appearance="accent"
               stretched
-              onClick={go}
+              onClick={(e) => {
+                go(e, toPay);
+              }}
               data-to="payFinish"
             >
               Оплатить

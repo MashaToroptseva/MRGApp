@@ -36,7 +36,8 @@ const App = () => {
   const [nextPlace, setNextPlace] = useState("home");
   const [accountData, setAccountData] = useState({});
   const [phoneData, setPhoneData] = useState({});
-  const [metersData, setMetersData] = useState({});
+  const [sumToPayData, setSumToPayData] = useState({});
+  const [emailData, setEmailData] = useState({});
 
   useEffect(() => {
     async function fetchData() {
@@ -56,13 +57,17 @@ const App = () => {
     setAccountData(data);
   };
 
-  const setMeters = (data) => {
-    setMetersData(data);
-    console.log(metersData);
+  const setSumToPay = (data) => {
+    setSumToPayData(data);
+    console.log(sumToPayData);
   };
 
   const setPhone = (data) => {
     setPhoneData(data);
+  };
+
+  const setEmail = (data) => {
+    setEmailData(data);
   };
 
   return (
@@ -97,13 +102,13 @@ const App = () => {
                   id="pay2"
                   go={go}
                   accountData={accountData}
-                  setMeters={setMeters}
+                  setSumToPay={setSumToPay}
                 />
                 <Pay3
                   id="pay3"
                   go={go}
                   accountData={accountData}
-                  metersData={metersData}
+                  sumToPayData={sumToPayData}
                   phoneData={phoneData}
                 />
                 <PayFinish id="payFinish" go={go} />
@@ -113,8 +118,8 @@ const App = () => {
                   go={go}
                   accountData={accountData}
                 />
-                <Subscribe1 id="subscribe1" go={go} />
-                <Subscribe2 id="subscribe2" go={go} />
+                <Subscribe1 id="subscribe1" go={go} setEmail={setEmail} />
+                <Subscribe2 id="subscribe2" go={go} emailData={emailData} />
                 <SubscribeFinish
                   id="subscribeFinish"
                   go={go}

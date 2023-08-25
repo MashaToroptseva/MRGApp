@@ -13,7 +13,7 @@ import {
 
 import "../index.css";
 
-const Subscribe1 = ({ id, go }) => {
+const Subscribe1 = ({ id, go, setEmail }) => {
   const [inputValue, setInputValue] = useState("");
   const [disabled, setDisabled] = useState(true);
 
@@ -26,6 +26,7 @@ const Subscribe1 = ({ id, go }) => {
       setDisabled(true);
     }
     setInputValue(newValue);
+    setEmail(event.target.value);
   };
 
   return (

@@ -14,7 +14,7 @@ import {
 
 import "../index.css";
 
-const Pay2 = ({ id, go, accountData, setMeters }) => {
+const Pay2 = ({ id, go, accountData, setSumToPay }) => {
   const [inputValue, setInputValue] = useState("");
   const [disabled, setDisabled] = useState(true);
 
@@ -27,7 +27,7 @@ const Pay2 = ({ id, go, accountData, setMeters }) => {
       setDisabled(true);
     }
     setInputValue(newValue);
-    setMeters(event.target.value);
+    setSumToPay(event.target.value);
   };
 
   const inputDate = accountData.dat_f;

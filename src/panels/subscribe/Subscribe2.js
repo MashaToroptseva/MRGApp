@@ -13,21 +13,22 @@ import {
   ButtonGroup,
 } from "@vkontakte/vkui";
 
-const Subscribe2 = ({ id, go }) => {
+const Subscribe2 = ({ id, go, emailData }) => {
   const [responseMessage, setResponseMessage] = useState("");
   const [formattedDateTime, setFormattedDateTime] = useState("");
 
   const refuseReceipt = async () => {
     const currentDate = new Date();
-    const formattedDateTime = format(currentDate, "yyyy-MM-dd HH:mm:ss");
+    const formattedDateTime = format(currentDate, "dd.MM.yyyy HH:mm:ss");
     setFormattedDateTime(formattedDateTime); // Обновляем значение formattedDateTime
+    console.log(formattedDateTime);
 
     const requestBody = {
       id_user_tlgrm: 123456789,
       date: formattedDateTime,
       device_ind_1: 0,
       receipt_subscr: true,
-      email_subscr: "example@mail.ru",
+      email_subscr: emailData,
     };
 
     try {
