@@ -4,6 +4,7 @@ import { parseISO, format } from "date-fns";
 import axios from "axios";
 import "../index.css";
 import logo from "../../img/logo.png";
+import { v4 as uuidv4 } from "uuid";
 
 import {
   Panel,
@@ -25,19 +26,26 @@ const Pay3 = ({ id, go, accountData, sumToPayData, phoneData }) => {
   const [responseMessage, setResponseMessage] = useState("");
   const [formattedDateTime, setFormattedDateTime] = useState("");
 
+  const [guid, setGuid] = useState(uuidv4());
+
+  const generateNewGuid = () => {
+    setGuid(uuidv4());
+    console.log(guid);
+  };
+
   const toPay = async () => {
     const currentDate = new Date();
     const formattedDateTime = format(currentDate, "yyyy-MM-dd HH:mm:ss");
     setFormattedDateTime(formattedDateTime); // Обновляем значение formattedDateTime
 
     const requestBody = {
-      id_payment: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      id_payment: guid,
       regionId: 20000,
       updateId: "",
       preCheckId: "",
       id_user_tlgrm: 34434,
       currency: "RUB",
-      total: sumTotal,
+      total: sumTotal * 100,
       commission: 0,
       cost: 0,
       invoicePayload: "",

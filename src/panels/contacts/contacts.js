@@ -21,42 +21,38 @@ const Contacts = ({ id, go }) => {
       <Div className="menu-container">
         <div className="msg">Адреса и контакты абонентских пунктов:</div>
         <ButtonGroup className="button-group" mode="vertical" gap="m" stretched>
-          <Button
-            size="l"
-            appearance="accent"
-            stretched
-            onClick={(e) => go(e, "sum")}
-            data-to="step1"
+          <a
+            href="https://www.peterburgregiongaz.ru/geo/sankt-peterburg/"
+            target="_blank"
           >
-            Санкт - Петербург
-          </Button>
-          <Button
-            size="l"
-            appearance="accent"
-            stretched
-            onClick={(e) => go(e, "payment")}
-            data-to="step1"
+            <Button size="l" appearance="accent" stretched>
+              Санкт - Петербург
+            </Button>
+          </a>
+          <a
+            href="https://www.peterburgregiongaz.ru/geo/leningradskaja-oblast/"
+            target="_blank"
           >
-            Ленинградская обл.
-          </Button>
-          <Button
-            size="l"
-            appearance="accent"
-            stretched
-            onClick={(e) => go(e, "meters")}
-            data-to="step1"
+            <Button size="l" appearance="accent" stretched>
+              Ленинградская обл.
+            </Button>
+          </a>
+          <a
+            href="https://www.peterburgregiongaz.ru/geo/respublika-karelija/"
+            target="_blank"
           >
-            Карелия
-          </Button>
-          <Button
-            size="l"
-            appearance="accent"
-            stretched
-            onClick={(e) => go(e, "subscribe")}
-            data-to="step1"
+            <Button size="l" appearance="accent" stretched>
+              Карелия
+            </Button>
+          </a>
+          <a
+            href="https://www.peterburgregiongaz.ru/geo/kaliningradskaja-oblast/"
+            target="_blank"
           >
-            Калининград
-          </Button>
+            <Button size="l" appearance="accent" stretched>
+              Калининград
+            </Button>
+          </a>
           <Button
             size="l"
             appearance="accent"

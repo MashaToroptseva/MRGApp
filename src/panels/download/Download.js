@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Icon28DocumentTextOutline } from "@vkontakte/icons";
 
 import {
   Panel,
@@ -24,9 +25,17 @@ const MetersFinish = ({ id, go, accountData }) => {
           <div>Отлично!✨</div>
           <div>Для просмотра квитанции, откройте документ:</div>
 
-          <Link href={accountData.url_receipt} target="_blank">
-            <div>Электронная квитанция</div>
-          </Link>
+          <a
+            className="inline-link"
+            href={accountData.url_receipt}
+            target="_blank"
+          >
+            <span className="svg">
+              <Icon28DocumentTextOutline />
+            </span>
+
+            <span> Электронная квитанция</span>
+          </a>
         </Div>
         <div>
           <ButtonGroup
@@ -35,16 +44,11 @@ const MetersFinish = ({ id, go, accountData }) => {
             gap="m"
             stretched
           >
-            <Button size="l" appearance="accent" stretched>
-              <Link
-                className="button-link"
-                href={accountData.url_receipt}
-                target="_blank"
-              >
+            <a href={accountData.url_receipt} target="_blank">
+              <Button size="l" appearance="accent" stretched>
                 Скачать
-              </Link>
-            </Button>
-
+              </Button>
+            </a>
             <Button
               size="l"
               appearance="accent"

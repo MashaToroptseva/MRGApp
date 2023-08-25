@@ -8,7 +8,6 @@ import {
   Panel,
   PanelHeader,
   PanelHeaderBack,
-  Link,
 } from "@vkontakte/vkui";
 
 import "../index.css";
@@ -31,24 +30,16 @@ const Faq = ({ id, go }) => {
           <div>Наша почта: support @ihelpdesk.me</div>
         </div>
         <ButtonGroup className="button-group" mode="vertical" gap="m" stretched>
-          <Button
-            size="l"
-            appearance="accent"
-            stretched
-            onClick={(e) => go(e, "sum")}
-            data-to="step1"
-          >
-            Популярные вопросы
-          </Button>
-          <Button size="l" appearance="accent" stretched>
-            <Link
-              className="button-link"
-              href="https://vk.com/id818111005"
-              target="_blank"
-            >
+          <a href="https://www.peterburgregiongaz.ru/faq/" target="_blank">
+            <Button size="l" appearance="accent" stretched>
+              Популярные вопросы
+            </Button>
+          </a>
+          <a href="https://vk.com/id818111005" target="_blank">
+            <Button size="l" appearance="accent" stretched>
               Связаться с нами
-            </Link>
-          </Button>
+            </Button>
+          </a>
           <Button
             size="l"
             appearance="accent"
