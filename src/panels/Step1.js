@@ -21,7 +21,7 @@ const Step1 = ({ id, go, nextPlace, setAccount }) => {
   const handleInputChange = (event) => {
     let newValue;
 
-    if (event.target.value.length > 9) {
+    if (event.target.value.length >= 9) {
       setDisabled(false);
       newValue = event.target.value.slice(0, 9);
     } else {

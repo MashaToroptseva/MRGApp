@@ -36,7 +36,7 @@ const Home = ({ id, go }) => {
             <Text>
               <div>Сумма к оплате в текущем месяце:</div>
               <div>
-                <b>✅ 90.0 ₽</b>
+                <b>✅ 110.0 ₽</b>
               </div>
             </Text>
             <Text>
