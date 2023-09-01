@@ -33,7 +33,7 @@ const Step1 = ({ id, go, nextPlace, setAccount }) => {
 
   useEffect(() => {
     axios
-      .get("/api_dev/account/717350082")
+      .get("https://mybot.supplerus.com/api_dev/account/717350082")
       .then((response) => setAccount(response.data))
       .catch((error) => console.error("Ошибка при получении данных", error));
   }, []);

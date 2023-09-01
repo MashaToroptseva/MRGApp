@@ -51,7 +51,7 @@ const Meters1 = ({ id, go, accountData }) => {
 
     try {
       const response = await axios.post(
-        "/api_dev/account/717350082",
+        "https://mybot.supplerus.com/api_dev/account/717350082",
         requestBody
       );
       setResponseMessage(response.data.message);

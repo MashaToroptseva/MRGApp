@@ -57,7 +57,7 @@ const Pay3 = ({ id, go, accountData, sumToPayData, phoneData }) => {
 
     try {
       const response = await axios.post(
-        "/api_dev/payment/717350082",
+        "https://mybot.supplerus.com/api_dev/payment/717350082",
         requestBody
       );
       setResponseMessage(response.data.message);
